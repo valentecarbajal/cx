@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Café Xico | El sabor de México</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           VARIABLES
+        ========================= */
+
+        :root {
+            --cafe: #4b2819;
+            --cafe-oscuro: #2b160d;
+            --crema: #f8f1e7;
+            --dorado: #c9944a;
+            --verde: #425443;
+            --blanco: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--cafe-oscuro);
+            background-color: var(--crema);
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: rgba(43, 22, 13, 0.97);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--blanco) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--dorado);
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--dorado) !important;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        #inicio {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(43, 22, 13, 0.72),
+                    rgba(43, 22, 13, 0.72)
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2000&q=85");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.95;
+        }
+
+        .hero-content h1 span {
+            color: var(--dorado);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 30px 0;
+            max-width: 600px;
+        }
+
+        .btn-cafe {
+            background-color: var(--dorado);
+            border: none;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-cafe:hover {
+            background-color: #b27d38;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           TITULOS
+        ========================= */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--cafe);
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* =========================
+           PRODUCTOS
+        ========================= */
+
+        #menu {
+            background-color: #fff;
+        }
+
+        .producto {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.15);
+        }
+
+        .producto img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .producto .card-body {
+            padding: 25px;
+        }
+
+        .precio {
+            color: var(--dorado);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* =========================
+           HISTORIA
+        ========================= */
+
+        #nosotros {
+            background-color: var(--verde);
+            color: white;
+        }
+
+        .historia-img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 20px 20px 0 var(--dorado);
+        }
+
+        .historia-text h2 {
+            font-size: 3rem;
+        }
+
+        .historia-text p {
+            line-height: 1.9;
+            color: #e7e7e7;
+        }
+
+        /* =========================
+           NUMEROS
+        ========================= */
+
+        .numero {
+            text-align: center;
+        }
+
+        .numero i {
+            font-size: 2.5rem;
+            color: var(--dorado);
+        }
+
+        .numero h3 {
+            font-size: 2.5rem;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           TESTIMONIOS
+        ========================= */
+
+        .testimonio {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(0,0,0,.07);
+        }
+
+        .estrellas {
+            color: var(--dorado);
+            font-size: 1.2rem;
+        }
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        #contacto {
+            background-color: var(--crema);
+        }
+
+        .contact-box {
+            background: var(--cafe);
+            color: white;
+            border-radius: 25px;
+            padding: 45px;
+        }
+
+        .contact-box i {
+            color: var(--dorado);
+            font-size: 1.7rem;
+            margin-right: 10px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 13px;
+            border: none;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: var(--cafe-oscuro);
+            color: white;
+            padding: 40px 0;
+        }
+
+        footer .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+        }
+
+        footer span {
+            color: var(--dorado);
+        }
+
+        .social a {
+            color: white;
+            font-size: 1.4rem;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            color: var(--dorado);
+        }
+
+        /* =========================
+           ANIMACIÓN
+        ========================= */
+
+        .fade-in {
+            animation: aparecer 1s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#inicio">
+            Café <span>Xico</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuNavegacion"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuNavegacion">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#inicio">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu">Menú</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#nosotros">Nosotros</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#opiniones">Opiniones</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section id="inicio">
+
+    <div class="container">
+
+        <div class="hero-content fade-in">
+
+            <p class="text-uppercase fw-bold">
+                Café mexicano · Desde Xico
+            </p>
+
+            <h1>
+                quiero agradecer al gobernador
+                <span>y a la chinembaum.</span>
+            </h1>
+
+            <p>
+                Tannto tiempo para no haber visto casi nada.
+                de haber sabido ni nazco!
+            </p>
+
+            <a href="#menu" class="btn btn-cafe">
+                Descubrir nuestro café
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<section id="menu">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <p class="text-uppercase fw-bold">
+                Nuestro menú
+            </p>
+
+            <h2>
+                Una taza para cada momento
+            </h2>
+
+            <p>
+                Seleccionamos ingredientes de la mejor calidad.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Producto 1 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card producto">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Café americano"
+                    >
+
+                    <div class="card-body">
+
+                        <h3>Café Americano</h3>
+
+                        <p>
+                            Café de altura con notas de chocolate y
+                            frutos secos.
+                        </p>
+
+                        <span class="precio">$45 MXN</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Producto 2 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card producto">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Cappuccino"
+                    >
+
+                    <div class="card-body">
+
+                        <h3>Cappuccino</h3>
+
+                        <p>
+                            Espresso intenso acompañado de leche
+                            cremosa y espuma.
+                        </p>
+
+                        <span class="precio">$65 MXN</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Producto 3 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card producto">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1461988091159-192b6df7054f?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Latte"
+                    >
+
+                    <div class="card-body">
+
+                        <h3>Latte Xico</h3>
+
+                        <p>
+                            Espresso, leche vaporizada y un toque
+                            especial de canela.
+                        </p>
+
+                        <span class="precio">$70 MXN</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NOSOTROS
+========================= -->
+
+<section id="nosotros">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <img
+                    src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
+                    class="historia-img"
+                    alt="Cafetería Café Xico"
+                >
+
+            </div>
+
+
+            <div class="col-lg-6 historia-text">
+
+                <p class="text-uppercase fw-bold">
+                    Nuestra historia
+                </p>
+
+                <h2>
+                    Más que café,
+                    una tradición.
+                </h2>
+
+                <p>
+                    Café Xico nace inspirado en la riqueza cafetalera
+                    de México y en esos pequeños momentos que hacen
+                    especial cada día.
+                </p>
+
+                <p>
+                    Nuestro objetivo es ofrecer café de calidad,
+                    acompañado de una experiencia cálida, auténtica
+                    y profundamente mexicana.
+                </p>
+
+                <a href="#contacto" class="btn btn-cafe">
+                    Visítanos
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="row mt-5 pt-5">
+
+            <div class="col-md-4 numero">
+
+                <i class="bi bi-cup-hot"></i>
+
+                <h3>10+</h3>
+
+                <p>
+                    Variedades de café
+                </p>
+
+            </div>
+
+
+            <div class="col-md-4 numero">
+
+                <i class="bi bi-people"></i>
+
+                <h3>5K+</h3>
+
+                <p>
+                    Clientes felices
+                </p>
+
+            </div>
+
+
+            <div class="col-md-4 numero">
+
+                <i class="bi bi-award"></i>
+
+                <h3>100%</h3>
+
+                <p>
+                    Pasión por el café
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TESTIMONIOS
+========================= -->
+
+<section id="opiniones">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <p class="text-uppercase fw-bold">
+                Lo que dicen nuestros clientes
+            </p>
+
+            <h2>
+                El café habla por sí mismo
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="testimonio">
+
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p class="mt-3">
+                        "Un café delicioso y un lugar perfecto
+                        para relajarse. El ambiente está increíble."
+                    </p>
+
+                    <strong>
+                        — Mariana
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="testimonio">
+
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p class="mt-3">
+                        "El Latte Xico se convirtió en mi café
+                        favorito. Definitivamente voy a regresar."
+                    </p>
+
+                    <strong>
+                        — Carlos
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="testimonio">
+
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p class="mt-3">
+                        "Excelente atención, buen café y un ambiente
+                        muy mexicano. 100% recomendado."
+                    </p>
+
+                    <strong>
+                        — Sofía
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTO
+========================= -->
+
+<section id="contacto">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <div class="row g-5">
+
+                <div class="col-lg-5">
+
+                    <p class="text-uppercase fw-bold">
+                        Ven a visitarnos
+                    </p>
+
+                    <h2>
+                        Hagamos de tu día
+                        algo más rico.
+                    </h2>
+
+                    <p class="mt-4">
+                        Estamos listos para preparar tu próxima
+                        taza de café.
+                    </p>
+
+                    <p>
+                        <i class="bi bi-geo-alt"></i>
+                        Xico, Veracruz, México
+                    </p>
+
+                    <p>
+                        <i class="bi bi-clock"></i>
+                        Lun - Dom · 8:00 - 21:00
+                    </p>
+
+                    <p>
+                        <i class="bi bi-telephone"></i>
+                        228 123 4567
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <form id="contactForm">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Tu nombre"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    placeholder="Tu correo"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <textarea
+                                    class="form-control"
+                                    rows="5"
+                                    placeholder="¿En qué podemos ayudarte?"
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-cafe"
+                                >
+                                    Enviar mensaje
+                                    <i class="bi bi-send"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+
+                <div class="logo">
+                    Café <span>Xico</span>
+                </div>
+
+                <small>
+                    El sabor de México en cada taza.
+                </small>
+
+            </div>
+
+
+            <div class="col-md-6 text-md-end mt-4 mt-md-0">
+
+                <div class="social">
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <hr class="mt-4">
+
+        <div class="text-center">
+
+            <small>
+                © 2026 Café Xico · Todos los derechos reservados
+            </small>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     BOOTSTRAP JS
+========================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    // Cerrar automáticamente el menú móvil
+    document.querySelectorAll('.navbar-nav .nav-link')
+        .forEach(link => {
+
+            link.addEventListener('click', () => {
+
+                const menu =
+                    document.getElementById('menuNavegacion');
+
+                const navbar =
+                    bootstrap.Collapse.getInstance(menu);
+
+                if (navbar) {
+                    navbar.hide();
+                }
+
+            });
+
+        });
+
+
+    // Formulario de contacto
+    document
+        .getElementById('contactForm')
+        .addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            alert(
+                '¡Gracias por contactar a Café Xico! ☕\n\n' +
+                'Tu mensaje ha sido recibido.'
+            );
+
+            this.reset();
+
+        });
+
+</script>
+
+</body>
+</html>
